@@ -1,7 +1,6 @@
 package com.Ashish.BookMyShow.model;
 
-import com.Ashish.BookMyShow.model.constant.SeatStatus;
-import com.Ashish.BookMyShow.model.constant.SeatType;
+import com.Ashish.BookMyShow.model.constant.ShowSeatStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -12,17 +11,14 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Seat extends BaseModel{
-    private int row;
-    private int col;
-    private int seatNumber;
-
+public class ShowSeat extends BaseModel{
+    private int price;
     @ManyToOne
     private Auditorium auditorium;
-
+    @ManyToOne
+    private Seat seat;
+    @ManyToOne
+    private Show show;
     @Enumerated(EnumType.STRING)
-    private SeatType seatType;
-
-    @Enumerated(EnumType.STRING)
-    private SeatStatus seatStatus;
+    private ShowSeatStatus showSeatStatus;
 }
