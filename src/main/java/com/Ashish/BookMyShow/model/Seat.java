@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Seat extends BaseModel{
-    private int row;
+    private int seatRow;
     private int col;
     private int seatNumber;
 

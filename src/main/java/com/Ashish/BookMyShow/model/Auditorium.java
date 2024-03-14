@@ -14,7 +14,7 @@ public class Auditorium extends BaseModel{
     private String name;
     private int capacity;
     @OneToMany
-    private List<Show> shows;
+    private List<MovieShow> shows;
     @OneToMany
     private List<Seat> seats;
     @ElementCollection // used when Enum is in multiple, ie, a datastructure ex - List, Set etc.

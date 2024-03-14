@@ -16,7 +16,7 @@ public class Ticket extends BaseModel{
     private double totalAmount;
 
     @ManyToOne
-    private Show show;
+    private MovieShow movieShow;
 
     @OneToMany
     private List<ShowSeat> showSeats;
