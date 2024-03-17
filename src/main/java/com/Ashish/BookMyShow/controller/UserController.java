@@ -1,6 +1,8 @@
 package com.Ashish.BookMyShow.controller;
 
+import com.Ashish.BookMyShow.dto.UserLoginRequestDTO;
 import com.Ashish.BookMyShow.dto.UserSignUpRequestDTO;
+import com.Ashish.BookMyShow.exception.UserException.UserAlreadyExistsException;
 import com.Ashish.BookMyShow.model.User;
 import com.Ashish.BookMyShow.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +18,20 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @PostMapping("/signUp")
-    public ResponseEntity signUp(@RequestBody UserSignUpRequestDTO signUpDto) {
+    @PostMapping("/signup")
+    public ResponseEntity signUp(@RequestBody UserSignUpRequestDTO userSignUpDto) {
+        if(userService.userExists(userSignUpDto.getEmail())){
+            throw new UserAlreadyExistsException("User with this email already exists.");
+        }
 
-        User user = userService.signup(signUpDto.getName(), signUpDto.getEmail(), signUpDto.getPassword());
+        User user = userService.signup(userSignUpDto.getName(), userSignUpDto.getEmail(), userSignUpDto.getPassword());
 
+        return ResponseEntity.ok(user);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity login(@RequestBody UserLoginRequestDTO userLoginRequestDTO) {
+        User user = userService.login(userLoginRequestDTO.getEmail(), userLoginRequestDTO.getPassword());
         return ResponseEntity.ok(user);
     }
 }

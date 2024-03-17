@@ -1,13 +1,15 @@
 package com.Ashish.BookMyShow.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 
 @MappedSuperclass
 public abstract class BaseModel {
+    @Getter
     @Id // tells that the attribute private int id is the primary key
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private int id;
     @Column(name = "CREATED_AT")
