@@ -26,5 +26,5 @@ public class Payment extends BaseModel{
     private PaymentMode paymentMode;
 
     @Enumerated(EnumType.STRING)
-    private PaymentStatus paymentStatus;
+    private PaymentStatus paymentStatus = PaymentStatus.UNPAID;
 }

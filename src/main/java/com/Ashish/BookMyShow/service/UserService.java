@@ -2,6 +2,7 @@ package com.Ashish.BookMyShow.service;
 
 import com.Ashish.BookMyShow.exception.UserException.InvalidPasswordException;
 import com.Ashish.BookMyShow.exception.UserException.UserDoesNotExistsException;
+import com.Ashish.BookMyShow.model.Ticket;
 import com.Ashish.BookMyShow.model.User;
 import com.Ashish.BookMyShow.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,13 @@ public class UserService {
     public boolean userExists(String email) {
         User user = userRepository.findUserByEmail(email);
         return user != null;
+    }
+
+    public User getUserById(int userId) {
+        return userRepository.findById(userId).get();
+    }
+
+    public void saveUser(User user) {
+        userRepository.save(user);
     }
 }

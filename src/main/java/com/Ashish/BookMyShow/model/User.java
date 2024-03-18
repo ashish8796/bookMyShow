@@ -5,6 +5,7 @@ import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,7 +17,7 @@ public class User extends BaseModel{
     private String password;
 
     @OneToMany
-    private List<Ticket> tickets;
+    private List<Ticket> tickets = new ArrayList<>();
 
 
     @Override
@@ -27,5 +28,9 @@ public class User extends BaseModel{
                 ", password='" + password + '\'' +
                 ", tickets=" + tickets +
                 '}';
+    }
+
+    public void addTicket(Ticket ticket) {
+        this.tickets.add(ticket);
     }
 }
