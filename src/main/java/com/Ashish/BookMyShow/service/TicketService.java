@@ -26,11 +26,14 @@ public class TicketService {
     @Autowired
     UserService userService;
 
+    @Autowired
+    PaymentService paymentService;
+
     public Ticket getTicketById(int ticketId) {
         return ticketRepository.findById(ticketId).get();
     }
 
-    public Ticket createTicket(double totalAmount, int showId, List<Integer> showSeatIds, int userId) {
+    public Ticket bookTicket(double totalAmount, int showId, List<Integer> showSeatIds, int userId) {
         Ticket ticket  = new Ticket();
         ticket.setTimeOfBooking(LocalDateTime.now());
         ticket.setTotalAmount(totalAmount);

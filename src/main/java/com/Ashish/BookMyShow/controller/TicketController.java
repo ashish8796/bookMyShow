@@ -21,7 +21,7 @@ public class TicketController {
 
     @PostMapping("/create")
     public ResponseEntity bookTicket(@RequestBody TicketRequestDTO ticketRequestDTO) {
-        Ticket ticket = ticketService.createTicket(ticketRequestDTO.getTotalAmount(), ticketRequestDTO.getShowId(), ticketRequestDTO.getShowSeatIds(), ticketRequestDTO.getUserId());
+        Ticket ticket = ticketService.bookTicket(ticketRequestDTO.getTotalAmount(), ticketRequestDTO.getShowId(), ticketRequestDTO.getShowSeatIds(), ticketRequestDTO.getUserId());
         return ResponseEntity.ok(ticket);
     }
 
